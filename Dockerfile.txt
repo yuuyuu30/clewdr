@@ -20,6 +20,12 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 
 WORKDIR /usr/src/app
 
+# 如果使用的是基于Debian/Ubuntu的镜像
+RUN apt-get update && apt-get install -y cmake
+
+# 或者如果使用的是基于Alpine的镜像
+# RUN apk add --no-cache cmake
+
 # 创建一个新的空项目
 RUN USER=root cargo new --bin clewdr
 WORKDIR /usr/src/app/clewdr
